@@ -3,29 +3,71 @@
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
 [initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
 
-## Install dependencies
+## Init the project
 
-By default, dependencies were installed when this application was generated.
-Whenever dependencies in `package.json` are changed, run the following command:
+### Set up the .env
+```sh
+vi .env
+```
+It should include keys like below:
+```
+MONGO_URL=mongodb://host:port/database_name
+MONGO_USER=***
+MONGO_PASSWORD=***
+OPENAPI_URL=http://host:port/openapi.json
+TEST_SERVER_URL=http://host:host
+```
 
+### Install node_modules
 ```sh
 npm install
 ```
 
-To only install resolved dependencies in `package-lock.json`:
+## Start to develop
 
 ```sh
-npm ci
+npm run dev
+```
+
+## Test the project
+
+```sh
+npm run test
 ```
 
 ## Run the application
-
+The rest server
 ```sh
 npm start
+```
+The graphql server
+```sh
+npm run start:graphql
 ```
 
 You can also run `node .` to skip the build step.
 
+Open http://127.0.0.1:3000 in your browser.
+
+## Deploy the project in a Docker approach.
+Login your server, and clone the project from github  
+```sh
+ssh user@host
+git clone ***
+```
+
+To build a docker image
+```sh
+npm run docker:build
+```
+To run a container
+```sh
+npm run docker:run
+```
+To see the container status
+```sh
+docker ps
+```
 Open http://127.0.0.1:3000 in your browser.
 
 ## Rebuild the project
@@ -58,18 +100,4 @@ npm run lint:fix
 
 - `npm run migrate`: Migrate database schemas for models
 - `npm run openapi-spec`: Generate OpenAPI spec into a file
-- `npm run docker:build`: Build a Docker image for this application
-- `npm run docker:run`: Run this application inside a Docker container
 
-## Tests
-
-```sh
-npm test
-```
-
-## What's next
-
-Please check out [LoopBack 4 documentation](https://loopback.io/doc/en/lb4/) to
-understand how you can continue to add features to this application.
-
-[![LoopBack](https://github.com/loopbackio/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
